@@ -1,12 +1,14 @@
 {
   "name": "github-explorer-graphql",
-  "version": "1.0",
+  "version": "0.0.1",
   "author": "Amit Mundra",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "node ./node_modules/vue-gh-pages/index.js"    
   },
+  "homepage": "https://amitmundra54.github.io/grpahql-explorer/",  
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.3.5",
