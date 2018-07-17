@@ -1,0 +1,10 @@
+.row {
+    display:grid;
+    grid-gap: 15px;
+    grid-auto-columns: auto;
+  }
+  .row.c2 {grid-template-columns: repeat(2, 1fr)}
+  .row.c3 {grid-template-columns: repeat(3, 1fr)}
+  .row.c4 {grid-template-columns:  repeat(4, 1fr)}
+  
+  .sm-container {max-width: 60vw; margin: 0 auto;}

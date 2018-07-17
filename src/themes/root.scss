@@ -1,0 +1,40 @@
+:root {
+    --fs-size: 14px;
+    --lh-height: 1.5rem;
+  
+    --fs-small: .8rem;
+    --lh-small: 1rem;
+  
+    --spacing-unit-large: 2.3rem;
+    --spacing-unit: 1rem;
+    --spacing-unit-small: .5rem;
+  
+    --c-blue: rgb(66, 133, 244);
+    --c-blue-dark: rgb(23, 47, 88);
+    --c-blue-light: rgb(33, 150, 243);
+  
+    --c-red: rgb(253, 70, 70);
+    --c-red-dark: rgb(188, 31, 45);
+  
+    --c-yellow: rgb(232, 178, 16);
+    --c-yellow-light: rgb(255, 234, 127);
+  
+    --c-green: rgb(76, 175, 80);
+  
+    --c-black: rgba(0, 0, 0, .9);
+    --c-gray-dark: rgb(99, 99, 99);
+    --c-gray: rgb(199, 199, 199);
+    --c-gray-light: rgb(242, 242, 242);
+  
+    --c-white-light: rgba(255, 255, 255, .9);
+  
+    --border: 1px solid rgb(199, 199, 199);
+  
+    --border-color: rgb(199, 199, 199);
+  
+    --radius: 3px;
+    --box-shadow: 0px 4px 5px 1px rgba(0, 0, 0, 0.27);
+  
+    --transition: all 300ms ease-in-out;
+  }
+  
