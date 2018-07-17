@@ -2,7 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './routing/router'
 import './registerServiceWorker'
-import { apolloProvider } from './apollo/apollorProvider'
+import { apolloProvider } from './apollo/apolloProvider'
 import store from './store/store'
 
 Vue.config.productionTip = false
