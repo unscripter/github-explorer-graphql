@@ -11,7 +11,6 @@ const getters = {
 
 const mutations = {
     [SHOW_HIDE_NAVIGATION](state) {
-        debugger;
         state.isVisible = !state.isVisible
     }
 }

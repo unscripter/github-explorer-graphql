@@ -38,9 +38,6 @@ export default {
   @media (max-width: 768px) {
       grid-template-columns: auto auto auto auto;
     }
-  // @media (max-width: 400px) {
-  //       width: 396px;
-  // }
 .hidden {
     margin-left: 5px;
      @media (max-width: 768px) {

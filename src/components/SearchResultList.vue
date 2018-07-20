@@ -19,13 +19,9 @@ export default {
         Avatar
     },
     props: ['searchResult'],
-    created() {
-        console.log("search",this.searchResult)
-    },
     methods: {
         ...mapMutations(['SHOW_HIDE_NAVIGATION']),
         handleClick(username) {
-            debugger;
             setTimeout(() => {
                 this.$router.push({
                     name: 'USER_DETAIL',

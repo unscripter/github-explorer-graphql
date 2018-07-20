@@ -37,9 +37,15 @@ export default {
             initialCursor: ''
         }
     },
+
     created() {
-        this.loaduser(this.username);
-        this.loadrepos(this.username);
+        this.username = this.$route.params.username === 'AmitMundra54' ? 'yyx990803' : 'AmitMundra54'  
+        this.$router.push({
+            name: 'USER_DETAIL',
+            params: {
+                username: this.username
+            }
+        });
     },
     components: {
         Profile,
@@ -52,23 +58,19 @@ export default {
     },
     methods: {
         fetchData() {
-            debugger;
             const { username } = this.$route.params;
             this.username = username;
             this.loaduser(username);
             this.loadrepos(username);
         },
         setCursor() {
-            debugger
             const { length } = this.repos;
             if (this.repos) {
-                debugger
                 this.preCursor = this.repos[0].cursor
                 this.nextCursor = this.repos[length -1].cursor;
             }
         },
         loadrepos(username, type) {
-            debugger
             this.$apollo.query({
                 query: fetchRepoDetails,
                 variables: {
@@ -76,10 +78,8 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                debugger;
                 this.repos = data.search.nodes[0].repositories.edges;
                 this.setInitialCursor();
-                console.log("Repo Data", this.repos);
             })
         },
         setInitialCursor() {
@@ -87,8 +87,6 @@ export default {
             this.initialCursor = this.repos[length-1].cursor;
         },
         loadPreviousRepos(username, preCursor) {
-            console.log("cursor", username, preCursor)
-        // if (cursor !== this.initialCursor){
             this.$apollo.query({
                 query: fetchPreviousRepoDetails,
                 variables: {
@@ -97,13 +95,10 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                debugger;
                 this.repos = data.search.nodes[0].repositories.edges;
-                console.log("Pre Data", this.repos);
             })
         },
         loadNextRepos(username, nextCursor) {
-            console.log("cursor", username, nextCursor)
             this.$apollo.query({
                 query: fetchNextRepoDetails,
                 variables: {
@@ -112,9 +107,7 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                debugger;
                 this.repos = data.search.nodes[0].repositories.edges;
-                console.log("Next Data", this.repos);
             })
         },
         loadPaginationRepos(type, username, cursor) {
@@ -126,7 +119,6 @@ export default {
             }
         },
         loaduser(username) {
-            debugger
             this.$apollo.query({
                 query: searchUserDetails,
                 variables: {
@@ -134,16 +126,12 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                debugger;
-                console.log("New Data", data);
                 this.user = data.user;
             })
         }
     }
 }
 </script>
-
-
 
 <style lang="scss" scoped>
 .profile-view {

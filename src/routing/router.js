@@ -20,16 +20,6 @@ export default new Router({
                     component: UserProfile
                 },
                 // {
-                //     path: 'user/:username/repos',
-                //     name: 'USER_REPO_LIST',
-                //     component: RepoList
-                // },
-                // {
-                //     path: 'user/:username/repos/:reponame',
-                //     name: 'REPO_DETAIL',
-                //     component: RepoDetail
-                // },
-                // {
                 //     path: '*',
                 //     name: 'NOT_FOUND',
                 //     component: NotFound,

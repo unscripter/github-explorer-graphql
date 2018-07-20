@@ -6,13 +6,13 @@
             aria-label="Search"
             type="search" 
             :placeholder="placeholder" 
-            class="search-input">
+            class="search-input" :value="initialValue">
         <button @click="$emit('search')" class="search-button"><i class="fa fa-search"></i></button>
     </div>
 </template>
 <script>
     export default {
-        props: ['placeholder', 'searchText'],
+        props: ['placeholder', 'searchText', 'initialValue'],
         methods: {
             handleInput(e) {
                 const { value } = e.target;
@@ -28,18 +28,12 @@
     border: 1px solid black;
     border-radius: 10px;
     margin: 1px;
-    // @media (max-width: 768px) {
-    //    grid-template-columns: 270px 40px;
-    // }
     .search-input {
         border: 1px solid black;
         border-radius: 10px;
         padding: 10px;
         width: 220px;
         margin-right: 5px;
-    //     @media (max-width: 768px) {
-    //     width: 290px;
-    // }
     }
     .search-button {
         height: 40px;
@@ -51,7 +45,6 @@
         font-family: GothamPro-Bold;
         font-size: 14px;
         letter-spacing: 0.5px;
-        // text-align: center;
         padding: 20px 20px 20px 20px;
 
         &.icon {

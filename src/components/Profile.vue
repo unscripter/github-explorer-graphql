@@ -65,10 +65,6 @@ export default {
         padding: 10px;
         grid-template-rows: 120px 100px 50px;
         background-color: var(--c-blue-light);
-        // @media(max-width: 768)        
-        // {
-        //     grid-template-rows: 50px 100px 40px;
-        // }
     }
     .profile-description {
         grid-template-columns: 120px 200px;

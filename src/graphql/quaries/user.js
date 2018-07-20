@@ -23,31 +23,31 @@ gql`query Search($username: String!) {
     nodes {
       ... on User {
         repositories(first: 5){
-    edges {
-      cursor
-      node {
-        name
-      description
-      watchers {
-        totalCount
-      }
-      forks {
-        totalCount
-      }
-      stargazers {
-        totalCount
-      }
-      languages(last: 3) {
-        edges {
-          node {
-            name
+            edges {
+              cursor
+              node {
+                name
+                description
+                watchers {
+                  totalCount
+                }
+                forks {
+                  totalCount
+                }
+                stargazers {
+                  totalCount
+                }
+                languages(last: 3) {
+                  edges {
+                    node {
+                      name
+                    }
+                  }
+                }
+                updatedAt
+              }
+            }
           }
-        }
-      }
-      updatedAt
-      }
-    }
-  }
       }
     }
   }
@@ -59,31 +59,31 @@ gql`query Search($username: String! $before: String!) {
     nodes {
       ... on User {
         repositories(last: 5, before: $before){
-    edges {
-      cursor
-      node {
-        name
-      description
-      watchers {
-        totalCount
-      }
-      forks {
-        totalCount
-      }
-      stargazers {
-        totalCount
-      }
-      languages(last: 3) {
-        edges {
+          edges {
+            cursor
           node {
-            name
+              name
+              description
+              watchers {
+                totalCount
+              }
+              forks {
+                totalCount
+              }
+              stargazers {
+                totalCount
+              }
+              languages(last: 3) {
+                edges {
+                  node {
+                    name
+                  }
+                }
+              }
+              updatedAt
+              }
           }
         }
-      }
-      updatedAt
-      }
-    }
-  }
       }
     }
   }
@@ -95,31 +95,31 @@ gql`query Search($username: String! $before: String!) {
       nodes {
         ... on User {
           repositories(first: 5 after: $after){
-      edges {
-        cursor
-        node {
-          name
-        description
-        watchers {
-          totalCount
-        }
-        forks {
-          totalCount
-        }
-        stargazers {
-          totalCount
-        }
-        languages(last: 3) {
-          edges {
+            edges {
+              cursor
             node {
-              name
+                name
+                description
+                watchers {
+                  totalCount
+                }
+                forks {
+                  totalCount
+                }
+                stargazers {
+                  totalCount
+                }
+                languages(last: 3) {
+                  edges {
+                    node {
+                      name
+                    }
+                  }
+                }
+                updatedAt
+                }
             }
           }
-        }
-        updatedAt
-        }
-      }
-    }
         }
       }
     }

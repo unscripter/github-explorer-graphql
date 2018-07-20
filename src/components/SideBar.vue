@@ -6,7 +6,7 @@
                 <span>Github Explorer</span>
             </div> -->
             <div class="side-search">
-                <search-input placeholder="enter keyword" v-model="searchText"></search-input>
+                <search-input placeholder="enter keyword" v-model="searchText" :initialValue="searchText"></search-input>
             </div>
             <div class="side-content">
                 <div id="loading" v-if="$apollo.loading">
@@ -48,7 +48,6 @@ export default {
      methods: {
         ...mapMutations(['SHOW_HIDE_NAVIGATION']),
         fetchUserDetails() {
-            debugger;
             this.$apollo.query({
                 query: searchAnonymousUser,
                 variables: {
@@ -56,10 +55,7 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                debugger;
-                console.log("DATA", data);
                 this.search = data.search;
-                // this.fetchedUsers = data.user;
             })
     }
     },
@@ -80,7 +76,6 @@ export default {
 <style lang="scss" scoped>
 .sidebar {
     background-color: var(--c-blue-dark);
-    // grid-template-columns:200px;
     grid-gap: 0;
     color: white;
     width: 280px;
@@ -90,17 +85,10 @@ export default {
     z-index: 20;
     top: 50px;
     transition:margin .4s ease;
-    // @media (max-width: 768px) {
-    //     width: 412px;
-    //     margin-left: -412px;
-    // }
     .sidenav-content {
         grid-template-rows: 50px 20px auto;
         width: 280px;
         margin-top: 5px;
-        // @media (max-width: 768px) {
-        //     width: 360px;
-        // }
         .side-toolbar {
             background-color: var(--c-blue);
             padding: 15px;
