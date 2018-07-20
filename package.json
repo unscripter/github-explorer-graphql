@@ -8,7 +8,7 @@
     "build": "vue-cli-service build",
     "deploy": "node ./node_modules/vue-gh-pages/index.js"    
   },
-  "homepage": "https://amitmundra54.github.io/grpahql-explorer/",  
+  "homepage": "https://github.com/AmitMundra54/github-explorer-graphql",  
   "dependencies": {
     "apollo-cache-inmemory": "^1.2.5",
     "apollo-client": "^2.3.5",
