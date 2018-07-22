@@ -6,7 +6,7 @@
                 <span>Github Explorer</span>
             </div> -->
             <div class="side-search">
-                <search-input placeholder="enter keyword" v-model="searchText" :initialValue="searchText"></search-input>
+                <search-input aria-label="Search" type="search" placeholder="enter keyword" v-model="searchText" :value="searchText" ></search-input>
             </div>
             <div class="side-content">
                 <div id="loading" v-if="$apollo.loading">
@@ -81,8 +81,9 @@ export default {
     width: 280px;
     margin-left: -280px;
     position: fixed;
-    height: 690px;
-    z-index: 20;
+    height: 700px;
+    // z-index: 20;
+    opacity: .95;
     top: 50px;
     transition:margin .4s ease;
     .sidenav-content {
