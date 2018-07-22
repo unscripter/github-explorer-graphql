@@ -1,5 +1,6 @@
 <template>
-    <div class="row profile-view" v-if="!$apollo.loading">
+    <div>
+        <div v-if="!$apollo.loading" class="row profile-view">
         <profile :user="user"></profile>  
         <div class="row repo-content">
             <div  v-for="(repo, index) in repos" 
@@ -16,6 +17,10 @@
                 <span @click="loadPaginationRepos('prev', username, preCursor)"><i class="fa fa-arrow-left" title="previous"></i></span>
                 <span @click="loadPaginationRepos('next', username, nextCursor)"><i class="fa fa-arrow-right" title="next"></i></span>
             </div>
+        </div>
+        </div>
+        <div v-else>
+            loading ...
         </div>
     </div>
 </template>
@@ -37,27 +42,22 @@ export default {
             initialCursor: ''
         }
     },
-
-    created() {
-        this.username = this.$route.params.username === 'AmitMundra54' ? 'yyx990803' : 'AmitMundra54'  
-        this.$router.push({
-            name: 'USER_DETAIL',
-            params: {
-                username: this.username
-            }
-        });
-    },
     components: {
         Profile,
         ListTransition,
         RepoItem     
     },
     watch: {
-        '$route': 'fetchData',
+        '$route': {
+           handler: 'fetchData',
+           immediate: true
+        },
         'repos': 'setCursor'
     },
     methods: {
         fetchData() {
+            debugger;
+            this.repos = [];
             const { username } = this.$route.params;
             this.username = username;
             this.loaduser(username);
@@ -65,12 +65,13 @@ export default {
         },
         setCursor() {
             const { length } = this.repos;
-            if (this.repos) {
+            if (this.repos && length) {
                 this.preCursor = this.repos[0].cursor
                 this.nextCursor = this.repos[length -1].cursor;
             }
         },
         loadrepos(username, type) {
+            debugger
             this.$apollo.query({
                 query: fetchRepoDetails,
                 variables: {
@@ -78,13 +79,18 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                this.repos = data.search.nodes[0].repositories.edges;
+                this.assignReposData(data);
                 this.setInitialCursor();
             })
         },
         setInitialCursor() {
             const { length } = this.repos;
             this.initialCursor = this.repos[length-1].cursor;
+        },
+        assignReposData(data) {
+            if (data.search.nodes[0].repositories.edges.length > 0) {
+                this.repos = data.search.nodes[0].repositories.edges;
+            }
         },
         loadPreviousRepos(username, preCursor) {
             this.$apollo.query({
@@ -95,7 +101,7 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                this.repos = data.search.nodes[0].repositories.edges;
+                this.assignReposData(data);
             })
         },
         loadNextRepos(username, nextCursor) {
@@ -107,10 +113,12 @@ export default {
                 },
                 fetchPolicy: 'cache-first'
             }).then(({data}) => {
-                this.repos = data.search.nodes[0].repositories.edges;
+                debugger
+                this.assignReposData(data);
             })
         },
         loadPaginationRepos(type, username, cursor) {
+            debugger;
             if (type === 'prev') {
                 this.loadPreviousRepos(username, cursor)
             } 
