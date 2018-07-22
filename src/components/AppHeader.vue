@@ -7,8 +7,12 @@
       </div>
       <div></div>
       <nav></nav>
-      <div class="auth-div">
-        <button class="auth-buttons">SignIn</button>
+      <div class="row auth-div">
+        <div class="search">
+          <input placeholder="Search term">
+          <span class="fa fa-search"></span>
+        </div>
+        <button name="button" class="auth-buttons">SignIn</button>
       </div>
     </header>
 </template>
@@ -43,14 +47,26 @@ export default {
      @media (max-width: 768px) {
       display: none;
     }
-.show {
-    display: none;
-    margin-left: 5px;
-    @media (max-width: 768px) {
-      display: none;
+    .show {
+        display: none;
+        margin-left: 5px;
+        @media (max-width: 768px) {
+          display: none;
+        }
     }
 }
-}
+  .search { position: relative; }
+  .search input { text-indent: 30px; width: 280px;
+    @media (max-width: 768px) {
+          width: 150px
+        }
+        }
+  .search .fa-search { 
+    position: absolute;
+    top: 24px;
+    right: 0px;
+    font-size: 15px;
+  }
 
   .brand {
     font-size: var(--lh-height);
@@ -58,6 +74,35 @@ export default {
     top: 5px; 
     margin-left: 5px;
   }
+  .auth-div {
+    grid-template-columns: 300px 100px;
+    @media (max-width: 768px) {
+          grid-template-columns: auto auto;
+        }
+  }
+  .search {
+  position: relative;
+  top: -5px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.search input {
+  // width: 250px;
+  height: 32px;
+
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+}
+
+.search input { text-indent: 32px;}
+.search .fa-search { 
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
   .auth-buttons {
       width: 100px;
       height: 35px;
@@ -66,11 +111,10 @@ export default {
       background-color: transparent;
       font-size: 20px;
       color: white;
-      float: right;
       padding: 5px;
-       @media (max-width: 768px) {
-       left: 0;
-    }
+    //    @media (max-width: 768px) {
+    //    left: 0;
+    // }
     }
 }
 </style>
