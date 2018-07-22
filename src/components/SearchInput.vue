@@ -1,24 +1,18 @@
 <template>
     <div class="row search">
         <input @focus="$emit('focus')"
-            @input="handleInput"
-            @keyup.enter="$emit('search')"
-            aria-label="Search"
-            type="search" 
-            :placeholder="placeholder" 
-            class="search-input" :value="initialValue">
+            v-bind="$attrs"
+            @input="$emit('input', $event.target.value)"
+            @keyup.enter="$emit('search')" 
+            class="search-input" 
+            :value="value">
         <button @click="$emit('search')" class="search-button"><i class="fa fa-search"></i></button>
     </div>
 </template>
 <script>
     export default {
-        props: ['placeholder', 'searchText', 'initialValue'],
-        methods: {
-            handleInput(e) {
-                const { value } = e.target;
-                this.$emit('input', value);
-            }
-        }
+        inheritAttrs: false,
+        props: ['searchText', 'value'],
     }
 </script>
 
