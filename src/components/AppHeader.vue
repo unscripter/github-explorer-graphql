@@ -9,7 +9,7 @@
       <nav></nav>
       <div class="row auth-div">
         <div class="search">
-          <input placeholder="Search term">
+          <input placeholder="search repo">
           <span class="fa fa-search"></span>
         </div>
         <button name="button" class="auth-buttons">SignIn</button>
@@ -112,9 +112,6 @@ export default {
       font-size: 20px;
       color: white;
       padding: 5px;
-    //    @media (max-width: 768px) {
-    //    left: 0;
-    // }
     }
 }
 </style>

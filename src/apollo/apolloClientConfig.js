@@ -13,18 +13,6 @@ const httpLink = new HttpLink({
   },
 })
 
-// const authMiddleware = new ApolloLink((operation, forward) => {
-//     // add the authorization to the headers
-//     operation.setContext({
-//       headers: {
-//         authorization: token,
-//       } 
-//     });
-  
-//     return forward(operation);
-//   })
-  
- 
 // Create the apollo client
 export const apolloClient = new ApolloClient({
   link: httpLink,

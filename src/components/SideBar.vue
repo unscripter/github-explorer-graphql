@@ -9,9 +9,7 @@
                 <search-input aria-label="Search" type="search" placeholder="enter keyword" v-model="searchText" :value="searchText" ></search-input>
             </div>
             <div class="side-content">
-                <div id="loading" v-if="$apollo.loading">
-                    <div class="loading"></div>
-                </div>
+                <loading-component v-if="$apollo.loading"></loading-component>
                 <div v-if="!$apollo.loading">
                     <div>
                         <search-list :searchResult="search.edges"></search-list>
@@ -25,7 +23,8 @@
 import { mapGetters, mapMutations } from 'vuex';
 import SearchInput from '@/components/SearchInput.vue';
 import { searchAnonymousUser } from '../graphql/quaries/user';
-import SearchList from '@/components/SearchResultList'
+import SearchList from '@/components/SearchResultList';
+
 
 export default {
     data() {
@@ -82,7 +81,6 @@ export default {
     margin-left: -280px;
     position: fixed;
     height: 700px;
-    // z-index: 20;
     opacity: .95;
     top: 50px;
     transition:margin .4s ease;
@@ -106,15 +104,6 @@ export default {
             color: white;
             width: 250px;
         }
-        .loading {
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        border: .25rem solid rgba(255,255,255,0.2);
-        border-top-color: white;
-        animation: spin 1s infinite linear;
-        margin: 15px auto;
-    }
     }   
 }
 @keyframes spin {
