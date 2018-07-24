@@ -12,7 +12,7 @@
           <input placeholder="search repo">
           <span class="fa fa-search"></span>
         </div>
-        <button name="button" class="auth-buttons">SignIn</button>
+        <base-button width="100" height="35" font="20" name="signIn">SignIn</base-button>
       </div>
     </header>
 </template>
@@ -35,6 +35,7 @@ export default {
 }
 .header {
   display: grid;
+  z-index: 5;
   grid-template-columns: repeat(4, 1fr);
   background-color: var(--c-blue-light);
   color: white;
@@ -103,16 +104,16 @@ export default {
   top: 10px;
   left: 10px;
 }
-  .auth-buttons {
-      width: 100px;
-      height: 35px;
-      border: 1px solid white;
-      border-radius: 5px;
-      background-color: transparent;
-      font-size: 20px;
-      color: white;
-      padding: 5px;
-    }
+  // .auth-buttons {
+  //     width: 100px;
+  //     height: 35px;
+  //     border: 1px solid white;
+  //     border-radius: 5px;
+  //     background-color: transparent;
+  //     font-size: 20px;
+  //     color: white;
+  //     padding: 5px;
+  //   }
 }
 </style>
 

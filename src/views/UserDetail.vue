@@ -3,7 +3,7 @@
         <loading-component v-if="$apollo.loading"></loading-component>
         <div v-else class="row profile-view">
             <profile :user="user"></profile>  
-            <div class="row repo-content">
+            <div class="row repo-content" v-if="getReposLength">
                 <div  v-for="(repo, index) in repos" 
                         :key="repo.cursor" >
                 <list-transition>
@@ -14,7 +14,7 @@
                     ></repo-item>
                 </list-transition>
                 </div>
-                <div class="pagination">
+                <div class="pagination" v-if="getReposLength">
                     <span @click="loadPaginationRepos('prev', username, preCursor)"><i class="fa fa-arrow-left" title="previous"></i></span>
                     <span @click="loadPaginationRepos('next', username, nextCursor)"><i class="fa fa-arrow-right" title="next"></i></span>
                 </div>
@@ -25,22 +25,7 @@
 
 <script>
 import { searchUserDetails, fetchRepoDetails, fetchPreviousRepoDetails, fetchNextRepoDetails } from '../graphql/quaries/user'
-import Profile from '@/components/Profile'
-import ListTransition from '@/components/ListTransition'
-import RepoItem from '@/components/RepoItem'
-import LoadingComponent from '@/components/Loading'
-import ErrorComponent from '@/components/Error'
-// import { AsyncComponent } from '@/components/globalFunc'
-// const Profile = import('@/components/Profile.vue')
-// const ListTransition = import('@/components/ListTransition')
-// const RepoItem  = import('@/components/RepoItem')
-const AsyncComponent = component => ({
-    component: () => import('@/components/Profile.vue'),
-    loading: LoadingComponent,
-    error: ErrorComponent,
-    delay: 100,
-    timeout: 1000
-})
+import { lazyLoadComponent } from '@/utils/dynamicLoading'
 
 
 export default {
@@ -54,10 +39,15 @@ export default {
             initialCursor: ''
         }
     },
+    computed: {
+        getReposLength() {
+            return this.repos.length
+        }
+    },
     components: {
-    Profile,
-    ListTransition,
-    RepoItem    
+    Profile: () => lazyLoadComponent('Profile'),
+    ListTransition: () => lazyLoadComponent('ListTransition'),
+    RepoItem: () => lazyLoadComponent('RepoItem')
     },
     watch: {
         '$route': {

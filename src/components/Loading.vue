@@ -7,8 +7,8 @@
 <style lang="scss" scoped>
 .loading {
         border-radius: 50%;
-        width: 24px;
-        height: 24px;
+        width: 70px;
+        height: 70px;
         border: .25rem solid black;
         border-top-color: white;
         animation: spin 1s infinite linear;

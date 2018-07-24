@@ -12,6 +12,8 @@
 import HeaderBar from '@/components/AppHeader';
 import FooterBar from '@/components/AppFooter';
 import SideBar from '@/components/SideBar'
+import { lazyLoadView } from '@/utils/dynamicLoading'
+
 
 export default {
     components: {

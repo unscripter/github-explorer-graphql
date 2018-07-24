@@ -1,5 +1,5 @@
 <template>
-    <div>
-        <h1>Something went wrong</h1>
+    <div style="text-align: center; margin: 50px;">
+        <h1>Page Not Found</h1>
     </div>
 </template>
