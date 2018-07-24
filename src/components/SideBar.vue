@@ -86,6 +86,7 @@ export default {
     opacity: .95;
     top: 50px;
     transition:margin .4s ease;
+    z-index: 1;
     .sidenav-content {
         grid-template-rows: 50px 20px auto;
         width: 280px;
