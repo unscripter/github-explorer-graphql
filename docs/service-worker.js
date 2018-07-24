@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.4.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.82d74174e52246c681bf500af3222977.js"
+  "/precache-manifest.079f477257017828ac29395263e52793.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "github-explorer-graphql"});
