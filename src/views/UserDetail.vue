@@ -24,11 +24,24 @@
 </template>
 
 <script>
-import { searchUserDetails, fetchRepoDetails, fetchPreviousRepoDetails, fetchNextRepoDetails} from '../graphql/quaries/user'
+import { searchUserDetails, fetchRepoDetails, fetchPreviousRepoDetails, fetchNextRepoDetails } from '../graphql/quaries/user'
 import Profile from '@/components/Profile'
 import ListTransition from '@/components/ListTransition'
 import RepoItem from '@/components/RepoItem'
 import LoadingComponent from '@/components/Loading'
+import ErrorComponent from '@/components/Error'
+// import { AsyncComponent } from '@/components/globalFunc'
+// const Profile = import('@/components/Profile.vue')
+// const ListTransition = import('@/components/ListTransition')
+// const RepoItem  = import('@/components/RepoItem')
+const AsyncComponent = component => ({
+    component: () => import('@/components/Profile.vue'),
+    loading: LoadingComponent,
+    error: ErrorComponent,
+    delay: 100,
+    timeout: 1000
+})
+
 
 export default {
     data() {
@@ -42,9 +55,9 @@ export default {
         }
     },
     components: {
-        Profile,
-        ListTransition,
-        RepoItem     
+    Profile,
+    ListTransition,
+    RepoItem    
     },
     watch: {
         '$route': {

@@ -10,7 +10,7 @@
             </div>
             <div class="side-content">
                 <loading-component v-if="$apollo.loading"></loading-component>
-                <div v-if="!$apollo.loading">
+                <div v-else>
                     <div>
                         <search-list :searchResult="search.edges"></search-list>
                     </div>
@@ -24,6 +24,7 @@ import { mapGetters, mapMutations } from 'vuex';
 import SearchInput from '@/components/SearchInput.vue';
 import { searchAnonymousUser } from '../graphql/quaries/user';
 import SearchList from '@/components/SearchResultList';
+import LoadingComponent from '@/components/Loading'
 
 
 export default {
@@ -39,7 +40,8 @@ export default {
     },
      components: {
        SearchInput,
-       SearchList
+       SearchList,
+       LoadingComponent
     },
     computed: {
         ...mapGetters(['visible']),
@@ -106,14 +108,7 @@ export default {
         }
     }   
 }
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
+
 .visible {
     margin: 0
 }
