@@ -4,10 +4,10 @@ export const searchUserDetails =
     gql`query User($login: String!){
       user(login: $login) {
         name
-          login
+        login
         bio 
-          avatarUrl
-            bioHTML
+        avatarUrl
+        bioHTML
       followers{
         totalCount
       }
@@ -23,6 +23,7 @@ gql`query Search($username: String!) {
     nodes {
       ... on User {
         repositories(first: 5){
+          totalCount
             edges {
               cursor
               node {

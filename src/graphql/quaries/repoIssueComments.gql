@@ -1,0 +1,28 @@
+query User($login: String!, $last: Number, $before: String!) {
+        user(login: $login) {
+        issueComments(last: $last, before: $before) {
+          totalCount
+          pageInfo {
+            hasNextPage
+            hasPreviousPage
+            endCursor
+            startCursor
+          }
+          edges {
+            cursor
+            node {
+              createdAt
+              bodyText
+              issue {
+                closed
+                bodyText    
+                createdAt
+                closedAt
+              }
+              repository{
+                name
+              }
+            }
+            
+          }
+        }
