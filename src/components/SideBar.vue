@@ -61,16 +61,16 @@ export default {
     }
     },
     apollo: {
-    search: {
-        $loadingKey: 'loading',
-        query: searchAnonymousUser,
-        variables() {
-            return {
-            query: this.searchText
+        search: {
+            $loadingKey: 'loading',
+            query: searchAnonymousUser,
+            variables() {
+                return {
+                query: this.searchText
+                }
+            },
+            fetchPolicy: 'cache-first'
             }
-        },
-        fetchPolicy: 'cache-first'
-        }
     }
 }
 </script>
@@ -84,9 +84,9 @@ export default {
     position: fixed;
     height: 700px;
     opacity: .95;
-    top: 50px;
+    top: 55px;
     transition:margin .4s ease;
-    z-index: 1;
+    z-index: 5;
     .sidenav-content {
         grid-template-rows: 50px 20px auto;
         width: 280px;

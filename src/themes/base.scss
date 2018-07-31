@@ -13,12 +13,17 @@ textarea {
     word-wrap: break-word;
     font-kerning: normal;
 }
+// body {
+//     overflow: hidden;
+// }
 
 * {
     box-sizing: border-box;
     vertical-align: top;
 }
-
+// ::-webkit-scrollbar {
+//     width: 10px;
+// }
 .d-block {
     display: block;
 }

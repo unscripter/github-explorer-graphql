@@ -7,6 +7,7 @@
             >
                 {{ repo.node.name }}
             </text-holder>
+            <span @click="SHOW_HIDE_MODAL_TAB_MODAL( { type: 'tabModal', open: true }  );SET_CURRENT_REPO_DETAILS({ name: repo.node.name, description: repo.node.description})"><i class="fa fa-expand" style="float: right;"></i></span>
         </div>
         <div class="repo-desc">
             <text-holder
@@ -48,9 +49,14 @@
 <script>
 import TextHolder from './TextHolder';
 import moment from 'moment';
+import { mapMutations } from 'vuex';
 
 export default {
-    props: ['repo'],
+    props: {
+        repo: {
+            type: Object,
+            default: {}
+        }},
     components: {
         TextHolder
     },
@@ -58,6 +64,14 @@ export default {
         fromNow(date) {
             return `Updated at ${moment(date).fromNow()}`;
         }
+    },
+    methods: {
+        ...mapMutations(['SET_CURRENT_REPO_DETAILS', 'SHOW_HIDE_MODAL_TAB_MODAL']),
+        // openModal() {
+        //     const modal = document.getElementById('myModal');
+        //     modal.style.display = 'block';
+        //     document.body.style.overflow = 'hidden';
+        // }
     }
 }
 </script>

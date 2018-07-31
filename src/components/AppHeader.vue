@@ -14,10 +14,15 @@
         </div>
         <base-button width="100" height="35" font="20" name="signIn">SignIn</base-button>
       </div>
+      <!-- <router-link :to="{ name: 'REPO_DETAIL', params: { reponame: 'abc' }}"></router-link> -->
+      <!-- <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>  -->
     </header>
+    
 </template>
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapMutations } from 'vuex';
 
 export default {
     methods: {
@@ -89,9 +94,7 @@ export default {
 }
 
 .search input {
-  // width: 250px;
   height: 32px;
-
   background: #fcfcfc;
   border: 1px solid #aaa;
   border-radius: 5px;
@@ -104,16 +107,21 @@ export default {
   top: 10px;
   left: 10px;
 }
-  // .auth-buttons {
-  //     width: 100px;
-  //     height: 35px;
-  //     border: 1px solid white;
-  //     border-radius: 5px;
-  //     background-color: transparent;
-  //     font-size: 20px;
-  //     color: white;
-  //     padding: 5px;
-  //   }
+}
+/* The progress container (grey background) */
+.progress-container {
+  display: grid;
+  grid-template-columns: 100%;
+  // width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+/* The progress bar (scroll indicator) */
+.progress-bar {
+  height: 8px;
+  background: #4caf50;
+  width: 0%;
 }
 </style>
 

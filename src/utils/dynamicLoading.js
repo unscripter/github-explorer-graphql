@@ -6,6 +6,7 @@ const loadComponent = component => import(`@/components/${component}.vue`)
 
 
 export const lazyLoadView = AsyncView => {
+  debugger;
     const AsyncHandler = () => ({
       component: loadView(AsyncView),
       loading: LoadingComponent,
@@ -25,6 +26,7 @@ export const lazyLoadView = AsyncView => {
   }
 
   export const lazyLoadComponent = AsyncView => {
+    debugger
     const AsyncHandler = () => ({
       component: loadComponent(AsyncView),
       loading: LoadingComponent,
