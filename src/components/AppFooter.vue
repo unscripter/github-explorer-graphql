@@ -13,7 +13,7 @@
     width: 100%;
     font-size: 20px;
     padding: 12px;
-    z-index: 30;
+    z-index: 5;
     color: white;
      @media (max-width: 768px) {
       font-size: 15px;

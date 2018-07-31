@@ -17,17 +17,6 @@ export default {
             loaded: false
         }
     },
-    props: ['src', 'className', 'id'],
-    mounted() {
-        this.$nextTick(() => {
-            this.loadImg();
-        });
-    },
-    watch: {
-        src() {
-            this.loadImg();
-        }
-    },
     methods: {
         loadImg() {
             this.loaded = false;
@@ -36,6 +25,17 @@ export default {
                 this.loaded = true;
             };
             this.img.src = this.src;
+        }
+    },
+    mounted() {
+        this.$nextTick(() => {
+            this.loadImg();
+        });
+    },
+    props: ['src', 'className', 'id'],
+    watch: {
+        src() {
+            this.loadImg();
         }
     }
 }

@@ -22,21 +22,27 @@
                     <h1>Following</h1>
                 </div>
                 <div>
-                    <span>coming</span>
-                    <h1>Public repos</h1>
+                    <span>{{repoCount}}</span>
+                    <h1>Repositories</h1>
                 </div>
             </div>
         </div>
 </template>
 <script>
 import Avatar from '@/components/Avatar'
+import { mapGetters } from 'vuex';
 
 export default {
     components: {
         Avatar
     },
-    props: ['user'],
+    props: {
+        user: {
+            type: Object,
+            default: {}
+        }},
     computed: {
+        ...mapGetters(['repoCount']),
         followers() {
             if (this.user && this.user.followers) {
                 return this.user.followers.totalCount;
