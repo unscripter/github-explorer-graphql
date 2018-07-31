@@ -1,8 +1,9 @@
 <template>
     <div>
+        <repo-detail></repo-detail>
         <loading-component v-if="$apollo.loading"></loading-component>
         <div v-else class="row profile-view">
-            <profile :user="user"></profile>  
+            <profile :user="user" :repoCount="totalRepos"></profile>  
             <div class="row repo-content" v-if="getReposLength">
                 <div  v-for="(repo, index) in repos" 
                         :key="repo.cursor" >
@@ -26,28 +27,31 @@
 <script>
 import { searchUserDetails, fetchRepoDetails, fetchPreviousRepoDetails, fetchNextRepoDetails } from '../graphql/quaries/user'
 import { lazyLoadComponent } from '@/utils/dynamicLoading'
-
+import RepoDetail from '@/views/RepoDetail'
+import { mapGetters, mapMutations } from 'vuex';
 
 export default {
     data() {
         return {
-            user: [],
+            user: {},
             repos: [],
             username: 'AmitMundra54',
             nextCursor: '',
             preCursor: '',
-            initialCursor: ''
+            initialCursor: '',
+            totalRepos: 0,
         }
     },
     computed: {
         getReposLength() {
-            return this.repos.length
+            return { length } = this.repos;
         }
     },
     components: {
     Profile: () => lazyLoadComponent('Profile'),
     ListTransition: () => lazyLoadComponent('ListTransition'),
-    RepoItem: () => lazyLoadComponent('RepoItem')
+    RepoItem: () => lazyLoadComponent('RepoItem'),
+    RepoDetail
     },
     watch: {
         '$route': {
@@ -57,6 +61,7 @@ export default {
         'repos': 'setCursor'
     },
     methods: {
+        ...mapMutations(['SET_TOTAL_REPO_COUNT']),
         fetchData() {
             debugger;
             this.repos = [];
@@ -91,6 +96,7 @@ export default {
         },
         assignReposData(data) {
             if (data.search.nodes[0].repositories.edges.length > 0) {
+                this.SET_TOTAL_REPO_COUNT(data.search.nodes[0].repositories.totalCount);
                 this.repos = data.search.nodes[0].repositories.edges;
             }
         },
