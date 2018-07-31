@@ -18,11 +18,6 @@ export default new Router({
                     component: () => lazyLoadView('UserDetail')
                 },
                 {
-                    path: 'user/username/:reponame',
-                    name: 'REPO_DETAIL',
-                    component: () => lazyLoadView('RepoDetail'),
-                },
-                {
                     path: '*',
                     name: 'NOT_FOUND',
                     component: () => lazyLoadView('NotFound'),
@@ -34,7 +29,13 @@ export default new Router({
                     }
                 }
             ]
-        }
-    ]
-
-})
+        },
+        // {
+        //     path: '/repodetail/:reponame',
+        //     name: 'REPO_DETAIL',
+        //     component: () => lazyLoadView('RepoDetail'),
+        // },
+    ],
+    scrollBehavior: (to, from, savedPosition) => ({x: 0, y: 0}), 
+    base: '/',
+});
