@@ -2,9 +2,9 @@
   <input
     :type="type"
     :value="value"
-    :class="$style.input"
+    :class="className"
     v-on="listeners"
-  >
+  style="background-color: red;">
 </template>
 
 <script>
@@ -18,6 +18,10 @@ export default {
       type: [String, Number],
       default: '',
     },
+    className: {
+      type: [String],
+      default: 'base'
+    }
   },
   computed: {
     listeners() {
