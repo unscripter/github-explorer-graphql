@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[2],{YS4v:function(n,e,t){"use strict";t.r(e);var c=function(){var n=this,e=n.$createElement,t=n._self._c||e;return t("h1",[n._v("coming")])},l=[],u=t("KHd+"),o={},r=Object(u["a"])(o,c,l,!1,null,null,null);e["default"]=r.exports}}]);
+//# sourceMappingURL=2.43337ad6.js.map
